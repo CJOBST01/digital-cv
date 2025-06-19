@@ -63,7 +63,7 @@ nav a:hover {
 section {
   margin-bottom: 40px;
   padding: 20px;
-  background-color: rgba(245, 237, 91, 0.73);
+  background-color: rgba(188, 188, 188, 0.73);
   border: 1px solid #eee;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -72,7 +72,7 @@ section {
 
 section h2 {
   font-size: 1.6rem;
-  color: #007acc;
+  color: #270052;
   border-left: 4px solid #007acc;
   padding-left: 10px;
   margin-bottom: 10px;
