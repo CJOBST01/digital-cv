@@ -8,7 +8,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #211747;
-  color: #3d0056;
+  color: #fff200bb;
   line-height: 1.6;
   padding: 20px;
   max-width: 900px;
@@ -18,7 +18,7 @@ body {
 body p {
   margin-bottom: 20px;
   font-size: 1rem;
-  color: #3d0056;
+  color: #fff200bb;
 }
 
 /* Header styling */
