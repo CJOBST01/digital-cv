@@ -9,7 +9,7 @@ body {
   align-items: center;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   color: #00bfff;
   text-shadow: 1px 1px 4px #000;
