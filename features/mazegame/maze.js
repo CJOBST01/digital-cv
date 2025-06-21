@@ -23,19 +23,51 @@ function createGrid() {
 }
 
 function generateMaze() {
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      if ((x === start.x && y === start.y) || (x === end.x && y === end.y)) {
-        cells[y][x].className = "cell";
-        if (x === start.x && y === start.y) cells[y][x].classList.add("start");
-        if (x === end.x && y === end.y) cells[y][x].classList.add("end");
-      } else {
-        cells[y][x].className = "cell";
-        if (Math.random() < 0.3) cells[y][x].classList.add("wall");
+  let solvable = false;
+
+  while (!solvable) {
+    // Step 1: Clear and rebuild maze with walls
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        if ((x === start.x && y === start.y) || (x === end.x && y === end.y)) {
+          cells[y][x].className = "cell";
+          if (x === start.x && y === start.y) cells[y][x].classList.add("start");
+          if (x === end.x && y === end.y) cells[y][x].classList.add("end");
+        } else {
+          cells[y][x].className = "cell";
+          if (Math.random() < 0.3) cells[y][x].classList.add("wall");
+        }
       }
     }
+
+    // Step 2: Test solvability
+    solvable = testMazeSolvability();
   }
+
   document.getElementById("pathLength").textContent = "";
+}
+function testMazeSolvability() {
+  const visited = Array.from({ length: size }, () => Array(size).fill(false));
+  const queue = [{ x: start.x, y: start.y }];
+
+  while (queue.length > 0) {
+    const { x, y } = queue.shift();
+
+    if (x < 0 || y < 0 || x >= size || y >= size) continue;
+    if (visited[y][x]) continue;
+    if (cells[y][x].classList.contains("wall")) continue;
+
+    visited[y][x] = true;
+
+    if (x === end.x && y === end.y) return true;
+
+    queue.push({ x: x + 1, y });
+    queue.push({ x: x - 1, y });
+    queue.push({ x, y: y + 1 });
+    queue.push({ x, y: y - 1 });
+  }
+
+  return false;
 }
 
 function solveMaze() {
