@@ -1,7 +1,8 @@
+
 const grid = document.getElementById("grid");
-const size = 10;
+const size = 30;
 let start = { x: 0, y: 0 };
-let end = { x: 9, y: 9 };
+let end = { x: size - 1, y: size - 1 };
 let cells = [];
 
 function createGrid() {
@@ -13,6 +14,7 @@ function createGrid() {
     for (let x = 0; x < size; x++) {
       const div = document.createElement("div");
       div.classList.add("cell");
+      div.addEventListener("click", () => toggleWall(x, y));
       if (x === start.x && y === start.y) div.classList.add("start");
       if (x === end.x && y === end.y) div.classList.add("end");
       grid.appendChild(div);
@@ -22,11 +24,33 @@ function createGrid() {
   }
 }
 
+function toggleWall(x, y) {
+  if ((x === start.x && y === start.y) || (x === end.x && y === end.y)) return;
+  cells[y][x].classList.toggle("wall");
+}
+
+function clearObstacles() {
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      if (!(x === start.x && y === start.y) && !(x === end.x && y === end.y)) {
+        cells[y][x].classList.remove("wall");
+      }
+    }
+  }
+}
+
+function clearPath() {
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      cells[y][x].classList.remove("path");
+    }
+  }
+  document.getElementById("pathLength").textContent = "";
+}
+
 function generateMaze() {
   let solvable = false;
-
   while (!solvable) {
-    // Step 1: Clear and rebuild maze with walls
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
         if ((x === start.x && y === start.y) || (x === end.x && y === end.y)) {
@@ -39,13 +63,11 @@ function generateMaze() {
         }
       }
     }
-
-    // Step 2: Test solvability
     solvable = testMazeSolvability();
   }
-
-  document.getElementById("pathLength").textContent = "";
+  clearPath();
 }
+
 function testMazeSolvability() {
   const visited = Array.from({ length: size }, () => Array(size).fill(false));
   const queue = [{ x: start.x, y: start.y }];
@@ -58,7 +80,6 @@ function testMazeSolvability() {
     if (cells[y][x].classList.contains("wall")) continue;
 
     visited[y][x] = true;
-
     if (x === end.x && y === end.y) return true;
 
     queue.push({ x: x + 1, y });
@@ -66,11 +87,11 @@ function testMazeSolvability() {
     queue.push({ x, y: y + 1 });
     queue.push({ x, y: y - 1 });
   }
-
   return false;
 }
 
 function solveMaze() {
+  clearPath();
   const visited = Array.from({ length: size }, () => Array(size).fill(false));
   const queue = [{ x: start.x, y: start.y, path: [] }];
 
@@ -99,9 +120,7 @@ function solveMaze() {
     queue.push({ x, y: y + 1, path: newPath });
     queue.push({ x, y: y - 1, path: newPath });
   }
-
   document.getElementById("pathLength").textContent = "No path found.";
 }
 
 createGrid();
-generateMaze();

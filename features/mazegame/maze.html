@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maze Solver</title>
+  <title>Interactive Maze Solver</title>
   <link rel="stylesheet" href="maze.css" />
 </head>
 <body>
@@ -11,8 +11,10 @@
   <div class="main-container">
     <div id="grid"></div>
     <div class="controls">
-      <button onclick="generateMaze()">Random Maze</button>
       <button onclick="solveMaze()">Solve Maze</button>
+      <button onclick="generateMaze()">Generate Random Maze</button>
+      <button onclick="clearObstacles()">Clear Obstacles</button>
+      <button onclick="clearPath()">Clear Path</button>
       <div id="pathLength" class="path-count"></div>
     </div>
   </div>
