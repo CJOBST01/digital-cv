@@ -16,11 +16,6 @@ h1, h2 {
   margin-bottom: 0.25rem;
 }
 
-h2 {
-  margin-bottom: 1rem;
-  color: gold
-}
-
 .main-container {
   display: flex;
   flex-direction: row;
@@ -84,4 +79,9 @@ h2 {
   margin-top: 15px;
   font-size: 1rem;
   color: #fff;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: gold
 }
