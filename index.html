@@ -10,7 +10,7 @@
 
   <header>
     <h1>Chris Obst</h1>
-    <img src="imgforcv.jpg" alt="An image of Chris Obst" class="profile-img" width="200" height="200" />
+    <img src="images/imgforcv.jpg" alt="An image of Chris Obst" class="profile-img" width="200" height="200" />
     <p>Election Administrator | <b>Full-Stack Web Developer <em>In Training</em></b></p>
     <nav>
       <ul class="nav-list">
@@ -104,12 +104,35 @@
     <section id="contact">
       <h2>Contact</h2>
       <ul>
-        <li>Email: <a href="mailto:502chris502@gmail.com"><img src="mail.svg" alt="">502chris502@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/christopher-obst-72bb23355/"><img src="linkedin.svg" alt="">LinkedIn.com/in/christopher-obst-72bb23355</a></li>
-        <li>GitHub: <a href="https://github.com/cjobst01"><img src="github.svg" alt="">github.com/CJOBST01</a></li>
+        <li>Email: <a href="mailto:502chris502@gmail.com"><img src="images/mail.svg" alt="">502chris502@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/christopher-obst-72bb23355/"><img src="images/linkedin.svg" alt="">LinkedIn.com/in/christopher-obst-72bb23355</a></li>
+        <li>GitHub: <a href="https://github.com/cjobst01"><img src="images/github.svg" alt="">github.com/CJOBST01</a></li>
         <!-- Icons are decorative enhancements; alt is left empty to avoid redundancy for screen readers -->
       </ul>
     </section>
+   <section id="contact-form">
+  <h2>Talk to Me!</h2>
+  <form action="https://formspree.io/f/xzzgkpqd" method="post">
+    <label>
+      Your name:
+      <input type="text" name="name" placeholder="Jane Doe" required>
+    </label>
+    <label>
+      Your email:
+      <input type="email" name="email" placeholder="you@example.com" required>
+    </label>
+    <label>
+      Your message:
+      <textarea name="message" placeholder="What's on your mind?" required></textarea>
+    </label>
+
+    <input type="hidden" name="_subject" value="New message from your portfolio">
+    <input type="hidden" name="_next" value="thank-you.html">
+    <input type="text" name="_gotcha" style="display:none">
+
+    <button type="submit">Send</button>
+  </form>
+</section>
   </main>
 
   <footer>
