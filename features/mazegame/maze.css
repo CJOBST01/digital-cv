@@ -111,3 +111,10 @@ a.back-link:active {
   color: #ffd700 !important;
   text-decoration: underline !important;
 }
+
+p {
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+  font-size: small;
+}
