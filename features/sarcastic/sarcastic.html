@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sarcastic Text Generator</title>
+  <link rel="stylesheet" href="sarcastic.css" />
+</head>
+<body>
+
+  <section id="sarcastic-generator">
+    <h2>Sarcastic Text Generator</h2>
+
+    <label for="inputText">Enter your text:</label>
+    <textarea id="inputText" rows="4" placeholder="Type something serious..."></textarea>
+
+    <button id="convertBtn">Convert</button>
+
+    <label for="colorPicker">Choose output color:</label>
+    <input type="color" id="colorPicker" value="#ffffff" />
+
+    <label for="outputText">Sarcastic version:</label>
+    <textarea id="outputText" rows="4" readonly></textarea>
+
+    <button id="copyBtn">Copy to Clipboard</button>
+
+    <a href="index.html" class="nav-link">← Back to CV</a>
+  </section>
+
+  <script src="sarcastic.js"></script>
+</body>
+</html>
