@@ -1,17 +1,48 @@
-
 const grid = document.getElementById("grid");
-const size = 30;
-let start = { x: 0, y: 0 };
-let end = { x: size - 1, y: size - 1 };
+let cols, rows;
+let start, end;
 let cells = [];
+
+function getResponsiveCols() {
+  const targetCellSize = 24;
+  const marginRatio = Math.min(0.2, Math.max(0.03, 0.2 - (window.innerWidth / 3000)));
+  const usableWidth = window.innerWidth * (1 - marginRatio * 2);
+  const estimatedCols = Math.floor(usableWidth / targetCellSize);
+  return Math.min(Math.max(estimatedCols, 5), 50);
+}
+
+function getResponsiveRows() {
+  const targetCellSize = 24;
+  const headerOffset = 250; // account for h1/h2/buttons
+  const usableHeight = window.innerHeight - headerOffset;
+  const estimatedRows = Math.floor(usableHeight / targetCellSize);
+  return Math.min(Math.max(estimatedRows, 5), 100);
+}
+
+function applyResponsiveLayout() {
+  cols = getResponsiveCols();
+  rows = getResponsiveRows();
+
+  document.documentElement.style.setProperty('--cols', cols);
+
+  const marginRatio = Math.min(0.2, Math.max(0.03, 0.2 - (window.innerWidth / 3000)));
+  const marginPercent = marginRatio * 100;
+  grid.style.marginLeft = `${marginPercent}vw`;
+  grid.style.marginRight = `${marginPercent}vw`;
+
+  start = { x: 0, y: 0 };
+  end = { x: cols - 1, y: rows - 1 };
+
+  createGrid();
+}
 
 function createGrid() {
   grid.innerHTML = "";
   cells = [];
 
-  for (let y = 0; y < size; y++) {
+  for (let y = 0; y < rows; y++) {
     const row = [];
-    for (let x = 0; x < size; x++) {
+    for (let x = 0; x < cols; x++) {
       const div = document.createElement("div");
       div.classList.add("cell");
       div.addEventListener("click", () => toggleWall(x, y));
@@ -30,8 +61,8 @@ function toggleWall(x, y) {
 }
 
 function clearObstacles() {
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
       if (!(x === start.x && y === start.y) && !(x === end.x && y === end.y)) {
         cells[y][x].classList.remove("wall");
       }
@@ -40,8 +71,8 @@ function clearObstacles() {
 }
 
 function clearPath() {
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
       cells[y][x].classList.remove("path");
     }
   }
@@ -51,16 +82,12 @@ function clearPath() {
 function generateMaze() {
   let solvable = false;
   while (!solvable) {
-    for (let y = 0; y < size; y++) {
-      for (let x = 0; x < size; x++) {
-        if ((x === start.x && y === start.y) || (x === end.x && y === end.y)) {
-          cells[y][x].className = "cell";
-          if (x === start.x && y === start.y) cells[y][x].classList.add("start");
-          if (x === end.x && y === end.y) cells[y][x].classList.add("end");
-        } else {
-          cells[y][x].className = "cell";
-          if (Math.random() < 0.3) cells[y][x].classList.add("wall");
-        }
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        cells[y][x].className = "cell";
+        if (x === start.x && y === start.y) cells[y][x].classList.add("start");
+        else if (x === end.x && y === end.y) cells[y][x].classList.add("end");
+        else if (Math.random() < 0.3) cells[y][x].classList.add("wall");
       }
     }
     solvable = testMazeSolvability();
@@ -69,13 +96,13 @@ function generateMaze() {
 }
 
 function testMazeSolvability() {
-  const visited = Array.from({ length: size }, () => Array(size).fill(false));
+  const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
   const queue = [{ x: start.x, y: start.y }];
 
   while (queue.length > 0) {
     const { x, y } = queue.shift();
 
-    if (x < 0 || y < 0 || x >= size || y >= size) continue;
+    if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
     if (visited[y][x]) continue;
     if (cells[y][x].classList.contains("wall")) continue;
 
@@ -92,13 +119,13 @@ function testMazeSolvability() {
 
 function solveMaze() {
   clearPath();
-  const visited = Array.from({ length: size }, () => Array(size).fill(false));
+  const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
   const queue = [{ x: start.x, y: start.y, path: [] }];
 
   while (queue.length > 0) {
     const { x, y, path } = queue.shift();
 
-    if (x < 0 || y < 0 || x >= size || y >= size) continue;
+    if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
     if (visited[y][x]) continue;
     if (cells[y][x].classList.contains("wall")) continue;
 
@@ -123,4 +150,6 @@ function solveMaze() {
   document.getElementById("pathLength").textContent = "No path found.";
 }
 
-createGrid();
+// Initial load and responsive update
+window.addEventListener('DOMContentLoaded', applyResponsiveLayout);
+window.addEventListener('resize', applyResponsiveLayout);
