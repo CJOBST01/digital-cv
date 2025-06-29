@@ -177,6 +177,11 @@ tbody td {
   border-bottom: 1px solid #eee;
 }
 
+/* table zeba striping */
+tbody tr:nth-child(even) {
+  background-color: #f5fdfc;
+}
+
 /* Footer row */
 tfoot td {
   padding: 14px 12px;
