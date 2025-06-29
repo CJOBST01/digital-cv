@@ -79,7 +79,7 @@ section {
 
 section h2 {
   font-size: 1.6rem;
-  color: #270052;
+  color: #a8e6cf;
   border-left: 4px solid #007acc;
   padding-left: 10px;
   margin-bottom: 10px;
@@ -179,12 +179,12 @@ caption {
   font-size: 1.2rem;
   font-weight: bold;
   color: #fff;
-  background-color: #1f2235;
+  background-color: #a8e6cf;
   border-bottom: 1px solid #444;
 }
 
 thead {
-  background-color: #1f2235;
+  background-color: #a8e6cf;
 }
 
 thead th {
@@ -203,7 +203,7 @@ tfoot td {
   padding: 16px 12px;
   font-style: italic;
   color: #aaa;
-  background-color: #1a1c2b;
+  background-color: #a8e6cf;;
 }
 
 @media (max-width: 600px) {
