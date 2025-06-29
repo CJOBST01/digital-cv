@@ -10,12 +10,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(
     to top right,
-    #a8e6cf 0%,      
-    #a8e6cf 33%,     
+    #00ffa2 0%,      
+    #8ef4cf 33%,     
     #add8e6 66%,     
     #ffffff 100%     
   );
-  color: #007acc;
+  color: #cc4b00;
   line-height: 1.6;
   padding: 20px;
   max-width: 900px;
@@ -23,7 +23,7 @@ body {
 }
 
 h1 {
-  color: rgba(255, 242, 0, 0.73);
+  color: #cc4b00;
 }
 
 /* Header styling */
@@ -42,7 +42,7 @@ header img {
 
 header p {
   font-size: 1.1rem;
-  color: rgba(255, 242, 0, 0.73);
+  color: #cc4b00;
 }
 
 /* Navigation */
@@ -56,13 +56,13 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #007acc;
+  color: #004370;
   font-weight: bold;
   transition: color 0.2s ease;
 }
 
 nav a:hover {
-  color: #005a99;
+  color: #cc4b00;
   text-decoration: underline;
 }
 
@@ -70,7 +70,7 @@ nav a:hover {
 section {
   margin-bottom: 40px;
   padding: 20px;
-  background-color: rgba(188, 188, 188, 0.73);
+  background-color: #00ffff5a;
   border: 1px solid #eee;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -79,7 +79,7 @@ section {
 
 section h2 {
   font-size: 1.6rem;
-  color: #a8e6cf;
+  color: #000000;
   border-left: 4px solid #007acc;
   padding-left: 10px;
   margin-bottom: 10px;
