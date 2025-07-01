@@ -319,3 +319,21 @@ tfoot td {
   max-height: 1000px;
   opacity: 1;
 }
+#toggleFormBtn {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#toggleFormBtn:hover {
+  background-color: #0097a7;
+  transform: scale(1.03);
+}
