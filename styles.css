@@ -342,3 +342,9 @@ tfoot td {
   background-color: #0097a7;
   transform: scale(1.03);
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
