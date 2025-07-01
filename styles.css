@@ -307,3 +307,15 @@ tfoot td {
 #contact-form input[name="_gotcha"] {
   display: none !important;
 }
+
+#contactFormWrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+#contactFormWrapper.show {
+  max-height: 1000px;
+  opacity: 1;
+}
