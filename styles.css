@@ -348,3 +348,16 @@ tfoot td {
   justify-content: center;
   margin-bottom: 20px;
 }
+
+.toggle-btn {
+  margin-bottom: 10px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.toggle-btn:hover {
+  background-color: #005f99;
+}
